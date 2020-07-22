@@ -2,10 +2,9 @@
 <head>
    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
    <meta content="utf-8" http-equiv="encoding">
-   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
-   <script src='https://raw.githubusercontent.com/philshem/random_dataviz/master/bundle.js'></script>
+   <script src='bundle.js'></script>
    <div id="plotly-div"></div>
    <script>
       // TODO: add random labels
@@ -40,7 +39,7 @@
         data = [...Array(Ncat)].map(() => generate_trace(columns));
       
               layout = {barmode: 'stack'};
-              Plotly.plot('plotly-div', {
+              window.plotly.plot('plotly-div', {
                 data: data,
                 layout: layout
               });     
@@ -48,4 +47,3 @@
    </script>
 </body>
 </html>
-
