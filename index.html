@@ -4,6 +4,7 @@
    <meta content="utf-8" http-equiv="encoding">
 </head>
 <body>
+   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
    <script src='bundle.js'></script>
    <div id="plotly-div"></div>
    <script>
@@ -39,7 +40,7 @@
         data = [...Array(Ncat)].map(() => generate_trace(columns));
       
               layout = {barmode: 'stack'};
-              window.plotly.plot('plotly-div', {
+              Plotly.plot('plotly-div', {
                 data: data,
                 layout: layout
               });     
@@ -47,3 +48,4 @@
    </script>
 </body>
 </html>
+
