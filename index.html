@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<head>
+   <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+   <meta content="utf-8" http-equiv="encoding">
+   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+   <script src='bundle.js'></script>
+   <div id="plotly-div"></div>
+   <script>
+      // TODO: add random labels
+      //var r = [window.chance.animal(), window.chance.name({ nationality: 'en' }), window.chance.domain(), window.chance.company()];
+      //var category = r[Math.floor(Math.random()*r.length)];
+      
+        var Nbar = window.chance.integer({ min: 2, max: 3 }); // max number of bars
+        var Ncat = window.chance.integer({ min: 2, max: 10 }); // max number of categories
+        var Nmax = window.chance.integer({ min: 10, max: 10000 });; // max size of bar
+      
+        function generate_trace(c){
+      
+          return {
+                name: window.chance.country({ full: true }),
+                type: 'bar', 
+                x: [Math.floor(Math.random()*Nmax), Math.floor(Math.random()*Nmax), Math.floor(Math.random()*Nmax)], 
+                y: c, 
+                marker: {
+                  line: {
+                    color: window.chance.color(),
+                    width: 1
+                  },
+                  color: window.chance.color()
+                }, 
+                orientation: 'h'
+              }
+      
+        }
+      
+        var columns = [...Array(Nbar)].map(() => window.chance.animal());
+      
+        data = [...Array(Ncat)].map(() => generate_trace(columns));
+      
+              layout = {barmode: 'stack'};
+              Plotly.plot('plotly-div', {
+                data: data,
+                layout: layout
+              });     
+           
+   </script>
+</body>
+</html>
+
